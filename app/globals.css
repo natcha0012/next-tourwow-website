@@ -3,6 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --tw-gray: #6d7278;
+  --tw-light-gray: #eceef3;
+  --tw-dark-blue: #0089df;
+  --tw-blue: #019dff;
+  --tw-sky-blue: #eef9ff;
+  --tw-green: #00bf80;
+  --tw-yellow: #ffbc05;
+  --tw-red: #ff0202;
 }
 
 @theme inline {
@@ -22,5 +30,37 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Kanit", sans-serif;
+}
+
+.text-tw-blue {
+  color: var(--tw-blue);
+}
+
+.container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (width <= 62rem) and (width > 48rem) {
+  .container {
+    max-width: 45rem !important;
+  }
+}
+
+@media (width <= 75rem) and (width > 62rem) {
+  .container {
+    max-width: 60rem !important;
+  }
+}
+@media (width > 62rem) {
+  .container {
+    max-width: 72rem !important;
+  }
+}
+
+h6 {
+  font-weight: bold;
 }
