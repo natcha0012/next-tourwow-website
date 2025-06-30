@@ -11,7 +11,13 @@ const Header = () => {
   return (
     <header className={`${styles.headerContainer} container`}>
       <SideBarButton></SideBarButton>
-      <Image src="/logo.svg" alt="TourWow Logo" width={148} height={60} />
+      <Image
+        src="/logo.svg"
+        alt="TourWow Logo"
+        width={148}
+        height={60}
+        priority
+      />
       <nav className={`hidden lg:flex ${styles.menuList}`}>
         <Link className="ml-6" href="/">
           หน้าแรก

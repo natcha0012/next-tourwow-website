@@ -3,6 +3,7 @@ import { Kanit, Sarabun } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header/Header";
 import SubHeader from "@/components/SubHeader/SubHeader";
+import FooterBar from "@/components/FooterBar/FooterBar";
 
 const kanit = Kanit({
   weight: ["300", "700"],
@@ -49,6 +50,7 @@ export default function RootLayout({
         <Header></Header>
         <SubHeader></SubHeader>
         {children}
+        <FooterBar></FooterBar>
       </body>
     </html>
   );

@@ -1,0 +1,29 @@
+.menuList {
+  margin: 1rem 0;
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+}
+
+.menuList > li {
+  margin: 0.5rem 0;
+}
+
+.menuList > li > a {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  color: var(--tw-blue);
+}
+
+@media (width < 62rem) {
+  .footerBlock {
+    min-width: 50%;
+  }
+  .menuList > li > a {
+    font-size: 1.25rem;
+  }
+}
+
+.footerContainer {
+  box-shadow: 0 -1px 4px #0000001a;
+}
