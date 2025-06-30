@@ -4,8 +4,8 @@ import styles from "./Header.module.css";
 import { FaLine, FaSquareFacebook } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import ProfileHeader from "../ProfileHeader/ProfileHeader";
-import SideBarButton from "../SideBarButton";
+import ProfileHeader from "./ProfileHeader/ProfileHeader";
+import SideBarButton from "./MobileSideBar/SideBarButton";
 
 const Header = () => {
   return (

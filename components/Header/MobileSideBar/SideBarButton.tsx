@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import MobileSideBar from "./MobileSideBar/MobileSideBar";
+import MobileSideBar from "./MobileSideBar";
 
 function SideBarButton() {
   const [isOpen, setIsOpen] = useState(false);
