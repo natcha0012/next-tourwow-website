@@ -37,6 +37,10 @@ body {
   color: var(--tw-blue);
 }
 
+.bg-tw-blue {
+  background-color: var(--tw-blue);
+}
+
 .container {
   padding-right: 1rem;
   padding-left: 1rem;
@@ -61,6 +65,7 @@ body {
   }
 }
 
+h2,
 h6 {
   font-weight: bold;
 }

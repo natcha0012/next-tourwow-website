@@ -172,7 +172,7 @@ function FooterBar() {
       </div>
       <div
         id="powerby-wrapper"
-        className="flex justify-center items-center text-white h-[60px] bg-[var(--tw-blue)]"
+        className="flex justify-center items-center text-white h-[60px] bg-tw-blue"
       >
         <span className="text-[0.53rem]">Powered by</span>
         <Image

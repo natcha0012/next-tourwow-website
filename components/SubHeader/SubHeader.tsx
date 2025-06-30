@@ -9,7 +9,7 @@ export default function SubHeader() {
   const [showPopupMenu, setShowPopupMenu] = useState(false);
 
   return (
-    <section id="sub-header" className="bg-[var(--tw-blue)]">
+    <section id="sub-header" className="bg-tw-blue">
       <div className="container">
         <ul id="menu-list" className="hidden lg:flex">
           <li
