@@ -1,0 +1,21 @@
+.article p {
+  margin: 1rem 0;
+  font-family: "Sarabun";
+  line-height: 1.5rem;
+}
+
+.article h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.article h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.article a {
+  color: var(--tw-blue);
+}

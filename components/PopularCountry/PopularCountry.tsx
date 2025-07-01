@@ -61,8 +61,8 @@ async function PopularCountry() {
                   <Image
                     src={item.image_url}
                     alt={`ประเทศยอดนิยม-${item.country.name_th}`}
-                    width={565}
-                    height={203}
+                    fill
+                    sizes="500px"
                   />
                 </figure>
                 <div className={styles.mark}></div>
@@ -70,17 +70,17 @@ async function PopularCountry() {
             </div>
           ))}
           <div className={styles.popularCountry}>
-            <a href="/tours">
+            <Link href="/tours">
               <span className={styles.imgCaption}>ดูประเทศยอดนิยมทั้งหมด</span>
               <figure className={styles.imgFigure}>
                 <Image
                   src={otherCountry}
                   alt="ประเทศยอดนิยมทั้งหมด"
-                  width="565"
-                  height="203"
+                  fill
+                  sizes="500px"
                 />
               </figure>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

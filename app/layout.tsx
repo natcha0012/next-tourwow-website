@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     title: "Tourwow",
     description: "โปรแกรมทัวร์ แพ็กเกจทัวร์ ท่องเที่ยวในประเทศ และต่างประเทศ",
     type: "website",
-    url: "https://tourwow.com/",
+    url: "https://next-tourwow-website.vercel.app/",
     images: [
       {
-        url: "https://tourwow.com/logo.svg",
+        url: "https://next-tourwow-website.vercel.app/logo.svg",
         width: 1200,
         height: 630,
         alt: "TourWow - โปรแกรมทัวร์คุณภาพ",

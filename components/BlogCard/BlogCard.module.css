@@ -1,0 +1,33 @@
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 2px 3px 8px #b4b4b4;
+  min-height: 420px;
+}
+
+.headline {
+  color: var(--tw-dark-blue);
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.prelude {
+  font-family: "Sarabun";
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cover {
+  margin: 0;
+}
+
+.cover > img {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  object-fit: cover;
+  height: 215px;
+}

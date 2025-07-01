@@ -1,9 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    remotePatterns: [new URL("https://media-prod.tourwow.com/**")],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media-prod.tourwow.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media-prod.twbits.com",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

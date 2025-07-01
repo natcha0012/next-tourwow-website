@@ -1,0 +1,20 @@
+.section {
+  background-color: #bcddff;
+  padding: 2rem 1rem;
+}
+
+.blogLink {
+  display: none;
+  border: 1px solid var(--tw-dark-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  color: var(--tw-dark-blue);
+  float: right;
+  margin-top: 2rem;
+}
+
+@media (min-width: 40rem) {
+  .blogLink {
+    display: block;
+  }
+}
