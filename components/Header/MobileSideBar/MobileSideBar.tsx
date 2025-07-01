@@ -89,26 +89,26 @@ export default function MobileSideBar({ onClose }: Props) {
           </li>
         </ul>
         <div className="flex">
-          <a
+          <Link
             href="https://www.facebook.com/TourwowOfficial"
             target="_blank"
             className={styles.linkIcon}
           >
             <FaSquareFacebook className="text-[#006cfa]" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://line.me/ti/p/~@tourwow"
             target="_blank"
             className={styles.linkIcon}
           >
             <FaLine className="text-[#00b536]" />
-          </a>
-          <a href="mailto:support@tourwow.com" className={styles.linkIcon}>
+          </Link>
+          <Link href="mailto:support@tourwow.com" className={styles.linkIcon}>
             <IoIosMail />
-          </a>
-          <a href="tel:026741500" className={styles.linkIcon}>
-            <BsFillTelephoneFill className=" text-[#0191ff]" />
-          </a>
+          </Link>
+          <Link href="tel:026741500" className={styles.linkIcon}>
+            <BsFillTelephoneFill className=" text-[#0191ff] w-7 h-7" />
+          </Link>
         </div>
 
         {["asia", "europe", "other"].map(

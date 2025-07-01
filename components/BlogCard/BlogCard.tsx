@@ -44,7 +44,7 @@ export default function BlogCard({ blog }: { blog: BlogCardData }) {
         <p className={styles.prelude}>{firstParagraph}</p>
       </div>
 
-      <div className="flex p-2">
+      <div className="flex p-2 items-center">
         <LuCalendarDays />
         <span className="ml-2">{formatThaiDate(blog.updated_at)}</span>
       </div>

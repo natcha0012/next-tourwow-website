@@ -115,11 +115,13 @@ function FooterBar() {
             </li>
             <li>
               <Link
-                className="flex py-2"
                 href="mailto:support@tourwow.com"
                 title="Email"
+                className="flex py-2"
               >
-                <IoIosMail className="text-xl mr-2" />
+                <div className="text-2xl">
+                  <IoIosMail className=" mr-2" />
+                </div>
                 <span>support@tourwow.com</span>
               </Link>
             </li>
@@ -130,7 +132,7 @@ function FooterBar() {
                 target="_blank"
                 href="https://www.facebook.com/TourwowOfficial"
               >
-                <FaSquareFacebook className="text-[#006cfa] text-xl mr-2" />
+                <FaSquareFacebook className="text-[#006cfa] text-2xl mr-2" />
                 <span>Tourwow</span>
               </Link>
             </li>
@@ -141,7 +143,7 @@ function FooterBar() {
                 target="_blank"
                 href="https://line.me/ti/p/~@tourwow"
               >
-                <FaLine className="text-xl mr-2 text-[#00b536]" />
+                <FaLine className="text-2xl mr-2 text-[#00b536]" />
                 <span>@tourwow</span>
               </Link>
             </li>
@@ -152,7 +154,7 @@ function FooterBar() {
                 target="_blank"
                 href="https://www.tiktok.com/@tourwow_official"
               >
-                <AiFillTikTok className="text-xl mr-2"></AiFillTikTok>
+                <AiFillTikTok className="w-7 h-7 mr-2"></AiFillTikTok>
                 <span>Tourwow Official</span>
               </Link>
             </li>
