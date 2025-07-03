@@ -1,7 +1,7 @@
-import Banner from "@/components/Banner/Banner";
-import HomepageSeoArticle from "@/components/HomPageSeoArticle/HomePageSeoArticle";
-import PopularCountry from "@/components/PopularCountry/PopularCountry";
-import TopArticle from "@/components/TopArticles/TopArticles";
+import Banner from "@/app/components/Banner/Banner";
+import HomepageSeoArticle from "@/app/components/HomPageSeoArticle/HomePageSeoArticle";
+import PopularCountry from "@/app/components/PopularCountry/PopularCountry";
+import TopArticle from "@/app/components/TopArticles/TopArticles";
 
 export default function Home() {
   return (

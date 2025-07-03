@@ -1,6 +1,6 @@
 import styles from "./TopArticles.module.css";
-import BlogCard from "../BlogCard/BlogCard";
-import { BlogCardData } from "../BlogCard/BlogCard.type";
+import BlogCard from "../../../components/BlogCard/BlogCard";
+import { BlogCardData } from "../../../components/BlogCard/BlogCard.type";
 import Link from "next/link";
 
 function extractFirstParagraph(text: string): string {
