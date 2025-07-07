@@ -1,0 +1,54 @@
+.wrap {
+  display: flex;
+  border: 1px solid var(--tw-blue);
+  border-radius: 30px;
+  margin: 1rem 0;
+  padding-top: 3px;
+  padding-left: 1.5rem;
+  padding-bottom: 3px;
+}
+
+.input {
+  font-size: 1.1rem;
+  width: 105%;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.searchButton {
+  color: var(--tw-white);
+  background-color: var(--tw-blue);
+  border: 0;
+  border-radius: 50%;
+  font-size: 1.5rem;
+
+  padding: 12px 15px;
+  margin-right: 4px;
+  width: 54px;
+  height: 54px;
+  cursor: pointer;
+}
+
+.helperWrap {
+  border: 1px solid var(--tw-light-gray);
+  border-radius: 8px;
+  background-color: white;
+
+  width: 150%;
+  position: absolute;
+  top: 4rem;
+  z-index: 1;
+}
+
+.countryWrap {
+  padding: 0.5rem 1rem;
+  width: 180%;
+}
+
+.suggestBody {
+  border-top: solid 1px var(--tw-light-gray);
+  position: relative;
+  padding: 0.5rem 0;
+}

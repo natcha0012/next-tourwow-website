@@ -52,13 +52,19 @@ body {
     max-width: 60rem !important;
   }
 }
-@media (width > 62rem) {
+@media (width > 75rem) {
   .container {
     max-width: 72rem !important;
   }
 }
 
+h1,
 h2,
 h6 {
   font-weight: bold;
+}
+
+h2 {
+  margin: 1.25rem 0;
+  font-size: 1.5rem;
 }

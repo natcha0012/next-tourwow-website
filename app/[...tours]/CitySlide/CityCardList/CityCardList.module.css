@@ -1,0 +1,26 @@
+.cityName {
+  position: absolute;
+  bottom: 0rem;
+  width: 170px;
+  color: white;
+  border-radius: 0 0 1rem 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.markSelector {
+  color: white;
+  background-color: var(--tw-blue);
+
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0.5rem;
+}
