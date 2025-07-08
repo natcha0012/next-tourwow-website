@@ -1,0 +1,16 @@
+.monthButton {
+  font-weight: bold;
+  margin-right: 1rem;
+
+  background-color: white;
+  border: 1px solid var(--tw-light-gray);
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  min-width: 120px;
+}
+
+.active,
+.monthButton:hover {
+  color: white;
+  background-color: var(--tw-blue);
+}

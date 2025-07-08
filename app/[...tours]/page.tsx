@@ -13,11 +13,12 @@ import SearchBox from "./SearchBox/SearchBox";
 import { getCurrentPageData } from "../libs/apis/page-data";
 import { ProgramFilters, ProgramSortBy } from "./types/program-filters";
 import { thaiMonths } from "@/constants/months";
-import { getPrograms } from "./apis/program-search";
+import { getPrograms } from "./apis/program";
 import { CountrySubUnit } from "./types/country";
 import CitySlide from "./CitySlide/CitySlide";
 import CityCardList from "./CitySlide/CityCardList/CityCardList";
 import DaySelector from "./DaySelector/DaySelector";
+import { tourRoutes } from "@/constants/tours-route";
 
 const countries = getAllCountry();
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
@@ -35,6 +36,10 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   };
   let defaultImage = "";
   const { tours } = await params;
+
+  if (!tourRoutes.includes(tours[0])) {
+    return <div>Page not found</div>;
+  }
   let cities: CountrySubUnit[] = [];
   const pageData = await getCurrentPageData("/" + (tours || []).join("/"));
   if (pageData) {
@@ -138,9 +143,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           <Image
             src={guruLogo}
             alt="guru-logo"
-            width={251}
-            height={32}
-            className="object-contain max-w-[40%]"
+            className="object-contain w-[251px] max-w-[40%] h-auto"
             priority
           ></Image>
           <span className="ml-2 mt-1 text-xl ">
@@ -160,9 +163,12 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           lowestPrice={tourwowGuRuHeader.lowestPrice}
         ></CityCardList>
       </CitySlide>
-      <DaySelector></DaySelector>
-
-      {/* <div>test japan page</div> */}
+      {countryId! && (
+        <DaySelector
+          countryId={countryId}
+          countrySubUnitId={countrySubUnitId}
+        ></DaySelector>
+      )}
     </div>
   );
 }

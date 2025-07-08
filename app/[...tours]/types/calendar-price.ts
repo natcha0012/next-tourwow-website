@@ -1,4 +1,4 @@
-export interface CalendarPrice {
+export interface ICalendarPrice {
   country_id: number | null;
   country_sub_unit_id: number | null;
   date: string;

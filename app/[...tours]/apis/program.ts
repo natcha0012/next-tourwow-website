@@ -3,6 +3,7 @@ import {
   ProgramPaginatedResponse,
   ProgramSortBy,
 } from "@/app/[...tours]/types/program-filters";
+import { ICalendarPrice } from "../types/calendar-price";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function getPrograms(
   page: number,
@@ -31,5 +32,31 @@ export async function getPrograms(
   } catch (error) {
     console.error("Error fetching program:", error);
     return null;
+  }
+}
+
+export async function getProductDateData(
+  countryId: number,
+  countrySubUnitId: number | undefined = undefined
+): Promise<ICalendarPrice[]> {
+  const url = `${API_URL}tw/products/dates`;
+  const params = new URLSearchParams();
+  const filters = {
+    country_id: countryId,
+    country_sub_unit_id: countrySubUnitId,
+  };
+  params.append("filters", JSON.stringify(filters));
+  try {
+    const res = await fetch(`${url}?${params.toString()}`);
+    const data = await res.json();
+    if (data.status === "success") {
+      return data.data;
+    } else {
+      console.warn("API response not success:", data);
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    return [];
   }
 }

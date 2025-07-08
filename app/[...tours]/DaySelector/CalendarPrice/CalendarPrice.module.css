@@ -1,0 +1,70 @@
+.calendarTravel {
+  color: var(--tw-gray);
+  display: flex;
+  flex-flow: column;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  box-shadow: 0 1px 2px #0000001a;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid var(--tw-gray);
+  margin-bottom: 1rem;
+}
+
+.header > li {
+  flex: 0 0 13.3%;
+  text-align: center;
+}
+
+.dayButton {
+  position: relative;
+  flex: 0 0 13.3%;
+  text-align: center;
+  min-height: 5rem;
+}
+
+.dayButton > label {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: white;
+
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid rgba(47, 92, 143, 0.261523);
+  padding-top: 0.5rem;
+}
+
+.disable {
+  background-color: white;
+  border-color: var(--tw-light-gray);
+  color: var(--tw-light-gray);
+  cursor: not-allowed;
+}
+
+.blank {
+  background-color: var(--tw-green) !important;
+  border-color: var(--tw-green) !important;
+  color: white;
+  cursor: pointer;
+}
+
+.full {
+  background-color: var(--tw-light-gray) !important;
+  border-color: var(--tw-light-gray) !important;
+  color: white;
+}
+
+.pick {
+  background-color: var(--tw-blue) !important;
+  border-color: var(--tw-blue) !important;
+  color: var(--tw-white);
+}
+
+.priceLabel {
+  font-size: 0.8rem;
+  display: block;
+}
