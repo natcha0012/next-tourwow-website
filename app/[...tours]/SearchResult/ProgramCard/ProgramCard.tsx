@@ -106,9 +106,8 @@ function ProgramCard({ program }: Props) {
             <div className={style.label}>
               <Image
                 src={Soldout}
-                width={110}
-                height={78}
                 alt="soldout"
+                className="h-[50px] w-auto"
               ></Image>
               <span className="text-white text-sm text-center">
                 ว้า.. เสียใจด้วยนะ

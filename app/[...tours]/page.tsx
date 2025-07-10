@@ -25,6 +25,7 @@ import { tourRoutes } from "@/constants/tours-route";
 import SearchResult from "./SearchResult/SearchResult";
 import SeoArticleHtml from "../blog/SeoArticleHtml/SeoArticleHtml";
 import SeoArticleHtmlClient from "../blog/SeoArticleHtml/SeoArticleHtmlClient";
+import SearchResultFaq from "./SearchResultFaq/SearchResultFaq";
 
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   const countries = getAllCountry();
@@ -194,6 +195,9 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           bannerPriority={false}
         ></SeoArticleHtml>
       </SeoArticleHtmlClient>
+      <SearchResultFaq
+        locationText={getCountryNameTH(countryId!) ?? ""}
+      ></SearchResultFaq>
     </div>
   );
 }
