@@ -11,6 +11,8 @@ import { getPrograms } from "../apis/program";
 import { Period, Program } from "../types/program";
 import ProgramCard from "./ProgramCard/ProgramCard";
 import { thaiMonthsAbbreviation } from "@/constants/months";
+import { programSelectedAtom } from "../atoms/programSelectedAtom";
+import { useAtom } from "jotai";
 type Props = {
   programResposne: ProgramPaginatedResponse | null;
   headlineText: string;
@@ -18,6 +20,7 @@ type Props = {
 };
 function SearchResult({ programResposne, headlineText, searchFilters }: Props) {
   const pageEntries = 12;
+  const [selectedDate] = useAtom(programSelectedAtom);
   const [showFilter, setShowFilter] = useState(false);
   const [programTotal, setProgramTotal] = useState(programResposne?.total);
   const [programList, setProgramList] = useState(programResposne?.result || []);
@@ -75,6 +78,19 @@ function SearchResult({ programResposne, headlineText, searchFilters }: Props) {
   useEffect(() => {
     transformData(programResposne?.result || []);
   }, [programResposne]);
+
+  useEffect(() => {
+    if (!selectedDate) return;
+    const today = new Date();
+    setPage(1);
+    searchFilters.period_start_at = `${today.getFullYear()}-${
+      (selectedDate?.month || 0) + 1
+    }-${selectedDate?.day}`;
+    getPrograms(1, pageEntries, searchFilters, sortBy).then((programs) => {
+      setProgramTotal(programs?.total);
+      transformData(programs?.result || []);
+    });
+  }, [selectedDate]);
 
   const onSortProgram = async (sortBy: ProgramSortBy) => {
     setPage(1);
