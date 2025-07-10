@@ -11,7 +11,10 @@ import {
 import { getAllCity } from "./apis/city";
 import SearchBox from "./SearchBox/SearchBox";
 import { getCurrentPageData } from "../libs/apis/page-data";
-import { ProgramFilters, ProgramSortBy } from "./types/program-filters";
+import {
+  ProgramFilters,
+  ProgramPaginatedResponse,
+} from "./types/program-filters";
 import { thaiMonths } from "@/constants/months";
 import { getPrograms } from "./apis/program";
 import { CountrySubUnit } from "./types/country";
@@ -19,22 +22,23 @@ import CitySlide from "./CitySlide/CitySlide";
 import CityCardList from "./CitySlide/CityCardList/CityCardList";
 import DaySelector from "./DaySelector/DaySelector";
 import { tourRoutes } from "@/constants/tours-route";
+import SearchResult from "./SearchResult/SearchResult";
 
-const countries = getAllCountry();
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
+  const countries = getAllCountry();
   const breadcrumb: BreadcrumbType[] = [];
   let countryId: number | null;
   let countrySubUnitId: number | null = null;
-  let searchFilters: ProgramFilters;
   let headlineText = "ทัวร์ต่างประเทศ";
   let showCityCount = false;
-  let sortBy: ProgramSortBy = "product_running_id_asc";
   let tourwowGuRuHeader = {
     cityCount: "0",
     totalQuantityRemaining: "0",
     lowestPrice: "0",
   };
   let defaultImage = "";
+  let initProgram: ProgramPaginatedResponse | null = null;
+  let searchFilters: ProgramFilters = {};
   const { tours } = await params;
 
   if (!tourRoutes.includes(tours[0])) {
@@ -51,7 +55,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
       defaultImage = `https://media-prod.tourwow.com/country_cover/${slug}.jpg`;
     }
     const month = pageData?.page_argument.month || null;
-    sortBy = pageData?.page_argument.sort || "product_running_id_asc";
+    const sortBy = pageData?.page_argument.sort || "product_running_id_asc";
     const transportation = pageData?.page_argument.go_transportation_id
       ? {
           id: pageData?.page_argument.go_transportation_id,
@@ -80,7 +84,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         .substring(2)} - ${(currentYear + 1).toString().substring(2)}`;
     }
     setHeadline(additionTextHeadline);
-    const initProgram = await getPrograms(1, 12, searchFilters, sortBy);
+    initProgram = await getPrograms(1, 12, searchFilters, sortBy);
     if (initProgram) {
       tourwowGuRuHeader = {
         cityCount: countryId ? getCityCount(countryId).toLocaleString() : "0",
@@ -132,6 +136,14 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         link: `/${findCountry?.slug}-tour`,
       });
     }
+
+    const city = cities.find((f) => f.id === countrySubUnitId);
+    if (city) {
+      breadcrumb.push({
+        text: `ทัวร์${city.name_th}`,
+        link: null,
+      });
+    }
   }
   return (
     <div>
@@ -153,7 +165,6 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </span>
         </div>
       </section>
-
       <CitySlide>
         <CityCardList
           defaultImage={defaultImage}
@@ -169,6 +180,11 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           countrySubUnitId={countrySubUnitId}
         ></DaySelector>
       )}
+      <SearchResult
+        programResposne={initProgram}
+        headlineText={headlineText}
+        searchFilters={searchFilters}
+      ></SearchResult>
     </div>
   );
 }

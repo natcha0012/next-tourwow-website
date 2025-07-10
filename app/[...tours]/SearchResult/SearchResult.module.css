@@ -1,0 +1,59 @@
+.filterButton {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  border-radius: 2rem;
+  padding: 0.25rem 1rem;
+
+  background-color: var(--tw-blue);
+  color: white;
+
+  position: relative;
+  cursor: pointer;
+}
+
+.sortOrderBox {
+  color: white;
+  background-color: var(--tw-blue);
+  padding: 0.5rem 1rem;
+  margin-top: 0.25rem;
+  border-radius: 0.25rem;
+
+  position: absolute;
+  z-index: 1;
+}
+
+.sortOrderBox > li {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.programCard {
+  flex: 1 1 100%;
+  min-height: 400px;
+  max-width: none;
+  margin: 0.5rem;
+}
+
+@media (min-width: 40rem) {
+  .programCard {
+    flex: 1 1 50%;
+  }
+}
+
+@media (min-width: 75rem) {
+  .programCard {
+    flex: 1 1 23%;
+    max-width: 292.5px;
+  }
+}
+
+.clickMoreBtn {
+  background-color: var(--tw-sky-blue);
+  color: var(--tw-blue);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0;
+
+  font-size: 1rem;
+}
