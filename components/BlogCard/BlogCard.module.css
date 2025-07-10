@@ -3,6 +3,7 @@
   border-radius: 0.5rem;
   box-shadow: 2px 3px 8px #b4b4b4;
   min-height: 420px;
+  min-width: 300px;
 }
 
 .headline {

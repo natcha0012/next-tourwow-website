@@ -45,9 +45,9 @@ export default async function TopArticle() {
         <strong className="text-[var(--tw-dark-blue)]">
           รีวิวสถานที่ท่องเที่ยวทั้งในประเทศและต่างประเทศ
         </strong>
-        <div className="flex sm:grid sm:grid-cols-3 gap-4 mt-4 overflow-y-scroll">
+        <div className="flex sm:grid sm:grid-cols-3 gap-4 mt-4 overflow-x-scroll">
           {blogs.map((blog) => (
-            <div className="pb-4 w-[80%] sm:w-full" key={blog.url_path}>
+            <div className="pb-4 w-full mr-1" key={blog.url_path}>
               <BlogCard blog={blog} />
             </div>
           ))}
