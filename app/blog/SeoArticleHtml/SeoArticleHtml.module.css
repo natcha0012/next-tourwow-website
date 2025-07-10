@@ -1,0 +1,47 @@
+.seoArticleContainer {
+  font-family: "Sarabun";
+  font-size: 1.2rem;
+  letter-spacing: 0.4px;
+  line-height: 26px;
+
+  padding: 1rem 0 2rem;
+  margin-bottom: 5rem;
+  background-color: var(--tw-white);
+
+  min-height: 90vh;
+}
+
+.articleTextContent {
+  padding: 1rem;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 40rem) {
+  .image > img {
+    width: 75%;
+  }
+}
+
+.collapsed {
+  overflow: hidden;
+  max-height: 120px;
+}
+
+.override .collapsed {
+  max-height: none;
+  overflow: visible;
+}
+
+.toggle {
+  font-family: "Kanit";
+  font-size: 1rem;
+
+  border-radius: 8px;
+  border: 1px solid #465668;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}

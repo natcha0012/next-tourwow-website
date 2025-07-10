@@ -23,6 +23,8 @@ import CityCardList from "./CitySlide/CityCardList/CityCardList";
 import DaySelector from "./DaySelector/DaySelector";
 import { tourRoutes } from "@/constants/tours-route";
 import SearchResult from "./SearchResult/SearchResult";
+import SeoArticleHtml from "../blog/SeoArticleHtml/SeoArticleHtml";
+import SeoArticleHtmlClient from "../blog/SeoArticleHtml/SeoArticleHtmlClient";
 
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   const countries = getAllCountry();
@@ -185,6 +187,13 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         headlineText={headlineText}
         searchFilters={searchFilters}
       ></SearchResult>
+      <SeoArticleHtmlClient>
+        <SeoArticleHtml
+          path={"/" + (tours || []).join("/")}
+          showH1={false}
+          bannerPriority={false}
+        ></SeoArticleHtml>
+      </SeoArticleHtmlClient>
     </div>
   );
 }
