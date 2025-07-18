@@ -25,37 +25,37 @@ export default function SubHeader() {
             {showPopupMenu && <PopupMenu />}
           </li>
           <li className="p-4 text-white">
-            <Link href="/japan-tour" title="ทัวร์ญี่ปุ่น">
+            <Link prefetch={false} href="/japan-tour" title="ทัวร์ญี่ปุ่น">
               ทัวร์ญี่ปุ่น
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/south-korea-tour" title="ทัวร์เกาหลี">
+            <Link prefetch={false} href="/south-korea-tour" title="ทัวร์เกาหลี">
               ทัวร์เกาหลี
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/vietnam-tour" title="ทัวร์เวียดนาม">
+            <Link prefetch={false} href="/vietnam-tour" title="ทัวร์เวียดนาม">
               ทัวร์เวียดนาม
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/singapore-tour" title="ทัวร์สิงคโปร์">
+            <Link prefetch={false} href="/singapore-tour" title="ทัวร์สิงคโปร์">
               ทัวร์สิงคโปร์
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/europe-tour" title="ทัวร์ยุโรป">
+            <Link prefetch={false} href="/europe-tour" title="ทัวร์ยุโรป">
               ทัวร์ยุโรป
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/taiwan-tour" title="ทัวร์ไต้หวัน">
+            <Link prefetch={false} href="/taiwan-tour" title="ทัวร์ไต้หวัน">
               ทัวร์ไต้หวัน
             </Link>
           </li>
           <li className="p-4 text-white">
-            <Link href="/georgia-tour" title="ทัวร์จอร์เจีย">
+            <Link prefetch={false} href="/georgia-tour" title="ทัวร์จอร์เจีย">
               ทัวร์จอร์เจีย
             </Link>
           </li>
