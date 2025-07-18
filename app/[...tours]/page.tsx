@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import guruLogo from "@/assets/tourwow-guru-logo.png";
 import Image from "next/image";
 import Breadcrumb, { BreadcrumbType } from "@/components/Breadcrumb";
@@ -11,22 +11,36 @@ import {
 import { getAllCity } from "./apis/city";
 import SearchBox from "./SearchBox/SearchBox";
 import { getCurrentPageData } from "../libs/apis/page-data";
-import {
-  ProgramFilters,
-  ProgramPaginatedResponse,
-} from "./types/program-filters";
+import { ProgramFilters } from "./types/program-filters";
 import { thaiMonths } from "@/constants/months";
-import { getPrograms } from "./apis/program";
 import { CountrySubUnit } from "./types/country";
 import CitySlide from "./CitySlide/CitySlide";
 import CityCardList from "./CitySlide/CityCardList/CityCardList";
 import DaySelector from "./DaySelector/DaySelector";
 import { tourRoutes } from "@/constants/tours-route";
-import SearchResult from "./SearchResult/SearchResult";
 import SeoArticleHtml from "../blog/SeoArticleHtml/SeoArticleHtml";
 import SeoArticleHtmlClient from "../blog/SeoArticleHtml/SeoArticleHtmlClient";
 import SearchResultFaq from "./SearchResultFaq/SearchResultFaq";
+import { Metadata } from "next";
+import SearchResult from "./SearchResult/SearchResult";
+import Loading from "../components/Loading/Loading";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tours: string[] }>;
+}): Promise<Metadata> {
+  const { tours } = await params;
+  const pageData = await getCurrentPageData("/" + (tours || []).join("/"));
+  return {
+    title: pageData?.meta_title || "Tourwow",
+    description: pageData?.meta_description,
+    openGraph: {
+      title: pageData?.meta_title || "Tourwow",
+      description: pageData?.meta_description,
+    },
+  };
+}
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   const countries = getAllCountry();
   const breadcrumb: BreadcrumbType[] = [];
@@ -40,7 +54,6 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
     lowestPrice: "0",
   };
   let defaultImage = "";
-  let initProgram: ProgramPaginatedResponse | null = null;
   let searchFilters: ProgramFilters = {};
   const { tours } = await params;
 
@@ -87,19 +100,11 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         .substring(2)} - ${(currentYear + 1).toString().substring(2)}`;
     }
     setHeadline(additionTextHeadline);
-    initProgram = await getPrograms(1, 12, searchFilters, sortBy);
-    if (initProgram) {
-      tourwowGuRuHeader = {
-        cityCount: countryId ? getCityCount(countryId).toLocaleString() : "0",
-        totalQuantityRemaining: Number(
-          initProgram.total_quantity_remaining
-        ).toLocaleString(),
-        lowestPrice: Number(initProgram.lowest_price).toLocaleString("th-TH", {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2,
-        }),
-      };
-    }
+    tourwowGuRuHeader = {
+      cityCount: countryId ? getCityCount(countryId).toLocaleString() : "0",
+      totalQuantityRemaining: "4,328",
+      lowestPrice: "21,999",
+    };
   }
 
   function setHeadline(additionText: string = ""): void {
@@ -168,6 +173,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </span>
         </div>
       </section>
+
       <CitySlide>
         <CityCardList
           defaultImage={defaultImage}
@@ -177,27 +183,30 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           lowestPrice={tourwowGuRuHeader.lowestPrice}
         ></CityCardList>
       </CitySlide>
-      {countryId! && (
-        <DaySelector
-          countryId={countryId}
-          countrySubUnitId={countrySubUnitId}
-        ></DaySelector>
-      )}
-      <SearchResult
-        programResposne={initProgram}
-        headlineText={headlineText}
-        searchFilters={searchFilters}
-      ></SearchResult>
-      <SeoArticleHtmlClient>
-        <SeoArticleHtml
-          path={"/" + (tours || []).join("/")}
-          showH1={false}
-          bannerPriority={false}
-        ></SeoArticleHtml>
-      </SeoArticleHtmlClient>
-      <SearchResultFaq
-        locationText={getCountryNameTH(countryId!) ?? ""}
-      ></SearchResultFaq>
+      <Suspense fallback={<Loading></Loading>}>
+        {countryId! && (
+          <DaySelector
+            countryId={countryId}
+            countrySubUnitId={countrySubUnitId}
+          ></DaySelector>
+        )}
+
+        <SearchResult
+          headlineText={headlineText}
+          searchFilters={searchFilters}
+        ></SearchResult>
+
+        <SeoArticleHtmlClient>
+          <SeoArticleHtml
+            path={"/" + (tours || []).join("/")}
+            showH1={false}
+            bannerPriority={false}
+          ></SeoArticleHtml>
+        </SeoArticleHtmlClient>
+        <SearchResultFaq
+          locationText={getCountryNameTH(countryId!) ?? ""}
+        ></SearchResultFaq>
+      </Suspense>
     </div>
   );
 }

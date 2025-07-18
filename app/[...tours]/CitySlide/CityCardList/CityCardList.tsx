@@ -22,6 +22,7 @@ export default function CityCardList({
     <>
       {cityList.map((item) => (
         <Link
+          prefetch={false}
           key={item.id}
           className="relative px-2 py-1"
           href={`${basePath}/${item.name_en}`}

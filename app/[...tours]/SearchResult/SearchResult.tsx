@@ -2,11 +2,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./SearchResult.module.css";
 import { FaSliders } from "react-icons/fa6";
-import {
-  ProgramFilters,
-  ProgramPaginatedResponse,
-  ProgramSortBy,
-} from "../types/program-filters";
+import { ProgramFilters, ProgramSortBy } from "../types/program-filters";
 import { getPrograms } from "../apis/program";
 import { Period, Program } from "../types/program";
 import ProgramCard from "./ProgramCard/ProgramCard";
@@ -14,18 +10,20 @@ import { thaiMonthsAbbreviation } from "@/constants/months";
 import { programSelectedAtom } from "../atoms/programSelectedAtom";
 import { useAtom } from "jotai";
 type Props = {
-  programResposne: ProgramPaginatedResponse | null;
   headlineText: string;
   searchFilters: ProgramFilters;
 };
-function SearchResult({ programResposne, headlineText, searchFilters }: Props) {
+function SearchResult({ headlineText, searchFilters }: Props) {
   const pageEntries = 12;
   const [selectedDate] = useAtom(programSelectedAtom);
   const [showFilter, setShowFilter] = useState(false);
-  const [programTotal, setProgramTotal] = useState(programResposne?.total);
-  const [programList, setProgramList] = useState(programResposne?.result || []);
+  const [programTotal, setProgramTotal] = useState<number | undefined>(
+    undefined
+  );
+  const [programList, setProgramList] = useState<Program[]>([]);
   const [sortBy, setSortBy] = useState<ProgramSortBy>("product_running_id_asc");
   const [page, setPage] = useState(1);
+  let hasFetched = false;
 
   const getPeriodMonth = (program: Program) => {
     const today = new Date();
@@ -76,11 +74,18 @@ function SearchResult({ programResposne, headlineText, searchFilters }: Props) {
   };
 
   useEffect(() => {
-    transformData(programResposne?.result || []);
-  }, [programResposne]);
+    if (hasFetched) return;
+    hasFetched = true;
+    getPrograms(1, pageEntries, searchFilters, sortBy).then((programs) => {
+      setProgramTotal(programs?.total);
+      transformData(programs?.result || []);
+    });
+  }, []);
 
   useEffect(() => {
-    if (!selectedDate) return;
+    if (!selectedDate) {
+      return;
+    }
     const today = new Date();
     setPage(1);
     searchFilters.period_start_at = `${today.getFullYear()}-${
