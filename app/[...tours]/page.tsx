@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import guruLogo from "@/assets/tourwow-guru-logo.png";
 import Image from "next/image";
 import Breadcrumb, { BreadcrumbType } from "@/components/Breadcrumb";
@@ -23,6 +23,7 @@ import SeoArticleHtmlClient from "../blog/SeoArticleHtml/SeoArticleHtmlClient";
 import SearchResultFaq from "./SearchResultFaq/SearchResultFaq";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Loading from "../components/Loading/Loading";
 const SearchResult = dynamic(() => import("./SearchResult/SearchResult"));
 export async function generateMetadata({
   params,
@@ -41,6 +42,7 @@ export async function generateMetadata({
   };
 }
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
+  const start = Date.now();
   const countries = getAllCountry();
   const breadcrumb: BreadcrumbType[] = [];
   let countryId: number | null;
@@ -152,6 +154,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
       });
     }
   }
+  console.log(Date.now() - start);
   return (
     <div>
       <Breadcrumb breadcrumb={breadcrumb}></Breadcrumb>
@@ -182,29 +185,29 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           lowestPrice={tourwowGuRuHeader.lowestPrice}
         ></CityCardList>
       </CitySlide>
+      <Suspense fallback={<Loading></Loading>}>
+        {countryId! && (
+          <DaySelector
+            countryId={countryId}
+            countrySubUnitId={countrySubUnitId}
+          ></DaySelector>
+        )}
+        <SearchResult
+          headlineText={headlineText}
+          searchFilters={searchFilters}
+        ></SearchResult>
 
-      {countryId! && (
-        <DaySelector
-          countryId={countryId}
-          countrySubUnitId={countrySubUnitId}
-        ></DaySelector>
-      )}
-
-      <SearchResult
-        headlineText={headlineText}
-        searchFilters={searchFilters}
-      ></SearchResult>
-
-      <SeoArticleHtmlClient>
-        <SeoArticleHtml
-          path={"/" + (tours || []).join("/")}
-          showH1={false}
-          bannerPriority={false}
-        ></SeoArticleHtml>
-      </SeoArticleHtmlClient>
-      <SearchResultFaq
-        locationText={getCountryNameTH(countryId!) ?? ""}
-      ></SearchResultFaq>
+        <SeoArticleHtmlClient>
+          <SeoArticleHtml
+            path={"/" + (tours || []).join("/")}
+            showH1={false}
+            bannerPriority={false}
+          ></SeoArticleHtml>
+        </SeoArticleHtmlClient>
+        <SearchResultFaq
+          locationText={getCountryNameTH(countryId!) ?? ""}
+        ></SearchResultFaq>
+      </Suspense>
     </div>
   );
 }
