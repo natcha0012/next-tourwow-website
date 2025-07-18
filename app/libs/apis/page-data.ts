@@ -12,7 +12,7 @@ export async function getCurrentPageData(
   const url = `${API_URL}tw/${AGENCY_DOMAIN}/pages/by_url_paths?${params.toString()}`;
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: "force-cache" });
     const data = await res.json();
     if (data.status === "success") {
       return data.data[0];

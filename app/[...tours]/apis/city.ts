@@ -19,7 +19,7 @@ export async function getAllCity(
   const url = `${API_URL}country_sub_units?${params.toString()}`;
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: "force-cache" });
     const data = await res.json();
 
     if (data.status === "success") {

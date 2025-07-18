@@ -7,7 +7,9 @@ export async function getSeoArticle(
 ): Promise<ISeoArticleDetail | null> {
   const url = `${API_URL}twm/${AGENCY_DOMAIN}/seo_articles/by_url_path`;
   try {
-    const res = await fetch(`${url}?url_path=${path}`);
+    const res = await fetch(`${url}?url_path=${path}`, {
+      cache: "force-cache",
+    });
     const data = await res.json();
     if (data.status === "success") {
       return data.data;
