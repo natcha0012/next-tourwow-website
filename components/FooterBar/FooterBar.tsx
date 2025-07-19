@@ -62,37 +62,41 @@ function FooterBar() {
 
         <ul className={`${styles.menuList} ${styles.footerBlock}`}>
           <li>
-            <Link href="/blog" title="บทความ">
+            <Link prefetch={false} href="/blog" title="บทความ">
               บทความ
             </Link>
           </li>
           <li>
-            <Link href="/about-us" title="เกี่ยวกับเรา">
+            <Link prefetch={false} href="/about-us" title="เกี่ยวกับเรา">
               เกี่ยวกับเรา
             </Link>
           </li>
           <li>
-            <Link href="/contact-us" title="ติดต่อเรา">
+            <Link prefetch={false} href="/contact-us" title="ติดต่อเรา">
               ติดต่อเรา
             </Link>
           </li>
           <li>
-            <Link href="/terms" title="ข้อตกลงการใช้งาน">
+            <Link prefetch={false} href="/terms" title="ข้อตกลงการใช้งาน">
               ข้อตกลงการใช้งาน
             </Link>
           </li>
           <li>
-            <Link href="/privacy-policy" title="นโยบายคุ้มครองข้อมูลส่วนบุคคล">
+            <Link
+              prefetch={false}
+              href="/privacy-policy"
+              title="นโยบายคุ้มครองข้อมูลส่วนบุคคล"
+            >
               นโยบายคุ้มครองข้อมูลส่วนบุคคล
             </Link>
           </li>
           <li>
-            <Link href="/testimonial" title="Testimonial">
+            <Link prefetch={false} href="/testimonial" title="Testimonial">
               Testimonial
             </Link>
           </li>
           <li>
-            <Link href="/gallery" title="แกลลอรี่">
+            <Link prefetch={false} href="/gallery" title="แกลลอรี่">
               แกลลอรี่
             </Link>
           </li>
@@ -104,6 +108,7 @@ function FooterBar() {
           <ul className="my-4">
             <li>
               <Link
+                prefetch={false}
                 className="flex py-2"
                 title="Tourwow Phone"
                 target="_blank"
@@ -115,6 +120,7 @@ function FooterBar() {
             </li>
             <li>
               <Link
+                prefetch={false}
                 href="mailto:support@tourwow.com"
                 title="Email"
                 className="flex py-2"
@@ -127,6 +133,7 @@ function FooterBar() {
             </li>
             <li>
               <Link
+                prefetch={false}
                 className="flex py-2"
                 title="Tourwow Facebook"
                 target="_blank"
@@ -138,6 +145,7 @@ function FooterBar() {
             </li>
             <li>
               <Link
+                prefetch={false}
                 className="flex py-2"
                 title="Tourwow Line"
                 target="_blank"
@@ -149,6 +157,7 @@ function FooterBar() {
             </li>
             <li>
               <Link
+                prefetch={false}
                 className="flex py-2"
                 title="Tourwow Tiktok"
                 target="_blank"

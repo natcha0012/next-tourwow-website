@@ -19,19 +19,19 @@ const Header = () => {
         priority
       />
       <nav className={`hidden lg:flex ${styles.menuList}`}>
-        <Link className="ml-6" href="/">
+        <Link prefetch={false} className="ml-6" href="/">
           หน้าแรก
         </Link>
-        <Link className="ml-6" href="/about-us">
+        <Link prefetch={false} className="ml-6" href="/about-us">
           เกี่ยวกับเรา
         </Link>
-        <Link className="ml-6" href="/contact-us">
+        <Link prefetch={false} className="ml-6" href="/contact-us">
           ติดต่อเรา
         </Link>
-        <Link className="ml-6" href="/blog">
+        <Link prefetch={false} className="ml-6" href="/blog">
           บทความ
         </Link>
-        <Link className="ml-6" href="/gallery">
+        <Link prefetch={false} className="ml-6" href="/gallery">
           แกลลอรี่
         </Link>
       </nav>
@@ -41,6 +41,7 @@ const Header = () => {
       </span>
       <div className="hidden lg:flex items-center m-4 gap-1">
         <Link
+          prefetch={false}
           title="Tourwow Facebook"
           target="_blank"
           href="https://www.facebook.com/TourwowOfficial"
@@ -48,6 +49,7 @@ const Header = () => {
           <FaSquareFacebook className="text-[#006cfa] w-7 h-7" />
         </Link>
         <Link
+          prefetch={false}
           title="Tourwow Line"
           target="_blank"
           href="https://line.me/ti/p/~@tourwow"
@@ -55,13 +57,19 @@ const Header = () => {
           <FaLine className="w-6 h-6 text-[#00b536]" />
         </Link>
         <Link
+          prefetch={false}
           title="Tourwow Tiktok"
           target="_blank"
           href="https://www.tiktok.com/@tourwow_official"
         >
           <AiFillTikTok className="w-8 h-8"></AiFillTikTok>
         </Link>
-        <Link title="Tourwow Phone" target="_blank" href="tel:026741500">
+        <Link
+          prefetch={false}
+          title="Tourwow Phone"
+          target="_blank"
+          href="tel:026741500"
+        >
           <BsFillTelephoneFill className="w-6 h-6 text-[#0191ff]" />
         </Link>
       </div>

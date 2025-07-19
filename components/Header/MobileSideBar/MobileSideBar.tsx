@@ -46,11 +46,15 @@ export default function MobileSideBar({ onClose }: Props) {
         </div>
         <ul className={styles.menuList}>
           <li>
-            <Link href="/">หน้าแรก</Link>
+            <Link prefetch={false} href="/">
+              หน้าแรก
+            </Link>
           </li>
           <hr className={styles.line} />
           <li>
-            <Link href="/tours">ทัวร์ต่างประเทศ</Link>
+            <Link prefetch={false} href="/tours">
+              ทัวร์ต่างประเทศ
+            </Link>
           </li>
           <li className="flex justify-between items-center">
             <a onClick={() => toggleMenu("asia")}>ทัวร์เอเชีย</a>
@@ -66,30 +70,45 @@ export default function MobileSideBar({ onClose }: Props) {
           </li>
           <hr className={styles.line} />
           <li>
-            <Link href="/blog">บทความ</Link>
+            <Link prefetch={false} href="/blog">
+              บทความ
+            </Link>
           </li>
           <hr className={styles.line} />
           <li>
-            <Link href="/about-us">เกี่ยวกับเรา</Link>
+            <Link prefetch={false} href="/about-us">
+              เกี่ยวกับเรา
+            </Link>
           </li>
           <li>
-            <Link href="/contact-us">ติดต่อเรา</Link>
+            <Link prefetch={false} href="/contact-us">
+              ติดต่อเรา
+            </Link>
           </li>
           <li>
-            <Link href="/terms">ข้อตกลงการใช้งาน</Link>
+            <Link prefetch={false} href="/terms">
+              ข้อตกลงการใช้งาน
+            </Link>
           </li>
           <li>
-            <Link href="/privacy-policy">นโยบายคุ้มครองข้อมูลส่วนบุคคล</Link>
+            <Link prefetch={false} href="/privacy-policy">
+              นโยบายคุ้มครองข้อมูลส่วนบุคคล
+            </Link>
           </li>
           <li>
-            <Link href="/testimonial">Testimonial</Link>
+            <Link prefetch={false} href="/testimonial">
+              Testimonial
+            </Link>
           </li>
           <li>
-            <Link href="/gallery">แกลลอรี่</Link>
+            <Link prefetch={false} href="/gallery">
+              แกลลอรี่
+            </Link>
           </li>
         </ul>
         <div className="flex">
           <Link
+            prefetch={false}
             href="https://www.facebook.com/TourwowOfficial"
             target="_blank"
             className={styles.linkIcon}
@@ -97,16 +116,25 @@ export default function MobileSideBar({ onClose }: Props) {
             <FaSquareFacebook className="text-[#006cfa]" />
           </Link>
           <Link
+            prefetch={false}
             href="https://line.me/ti/p/~@tourwow"
             target="_blank"
             className={styles.linkIcon}
           >
             <FaLine className="text-[#00b536]" />
           </Link>
-          <Link href="mailto:support@tourwow.com" className={styles.linkIcon}>
+          <Link
+            prefetch={false}
+            href="mailto:support@tourwow.com"
+            className={styles.linkIcon}
+          >
             <IoIosMail />
           </Link>
-          <Link href="tel:026741500" className={styles.linkIcon}>
+          <Link
+            prefetch={false}
+            href="tel:026741500"
+            className={styles.linkIcon}
+          >
             <BsFillTelephoneFill className=" text-[#0191ff] w-7 h-7" />
           </Link>
         </div>
@@ -122,7 +150,11 @@ export default function MobileSideBar({ onClose }: Props) {
                 </h6>
                 {continents[continent].map((item, index) => (
                   <li key={index}>
-                    <Link className="text-tw-blue" href={`/${item.slug}-tour`}>
+                    <Link
+                      prefetch={false}
+                      className="text-tw-blue"
+                      href={`/${item.slug}-tour`}
+                    >
                       {item.name_th}
                     </Link>
                   </li>
