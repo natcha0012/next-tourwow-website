@@ -155,24 +155,42 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   }
   return (
     <div>
-      <Breadcrumb breadcrumb={breadcrumb}></Breadcrumb>
-      <SearchBox countries={countries} cities={cities}></SearchBox>
-      <section className="h-[145px] container flex items-center justify-center flex-col">
-        <h1 className="text-[2rem] mt-6">{headlineText}</h1>
-        <div className="flex">
-          <Image
-            src={guruLogo}
-            alt="guru-logo"
-            className="object-contain w-[251px] max-w-[40%] h-auto"
-            priority
-          ></Image>
-          <span className="ml-2 mt-1 text-xl ">
-            มี {showCityCount && `${tourwowGuRuHeader.cityCount} เมือง`}{" "}
-            {tourwowGuRuHeader.totalQuantityRemaining} ที่นั่ง เริ่มต้นที่{" "}
-            {tourwowGuRuHeader.lowestPrice} บาท
-          </span>
-        </div>
-      </section>
+      <Suspense fallback={<Loading></Loading>}>
+        <Breadcrumb breadcrumb={breadcrumb}></Breadcrumb>
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="h-[65px]">
+            <Loading></Loading>
+          </div>
+        }
+      >
+        <SearchBox countries={countries} cities={cities}></SearchBox>
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="h-[145px]">
+            <Loading></Loading>
+          </div>
+        }
+      >
+        <section className="h-[145px] container flex items-center justify-center flex-col">
+          <h1 className="text-[2rem] mt-6">{headlineText}</h1>
+          <div className="flex">
+            <Image
+              src={guruLogo}
+              alt="guru-logo"
+              className="object-contain w-[251px] max-w-[40%] h-auto"
+              priority
+            ></Image>
+            <span className="ml-2 mt-1 text-xl ">
+              มี {showCityCount && `${tourwowGuRuHeader.cityCount} เมือง`}{" "}
+              {tourwowGuRuHeader.totalQuantityRemaining} ที่นั่ง เริ่มต้นที่{" "}
+              {tourwowGuRuHeader.lowestPrice} บาท
+            </span>
+          </div>
+        </section>
+      </Suspense>
       <Suspense
         fallback={
           <div className="h-[264px]">
@@ -203,11 +221,26 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
             countrySubUnitId={countrySubUnitId}
           ></DaySelector>
         )}
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="h-[50vh]">
+            <Loading></Loading>
+          </div>
+        }
+      >
         <SearchResult
           headlineText={headlineText}
           searchFilters={searchFilters}
         ></SearchResult>
-
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="h-[50vh]">
+            <Loading></Loading>
+          </div>
+        }
+      >
         <SeoArticleHtmlClient>
           <SeoArticleHtml
             path={"/" + (tours || []).join("/")}
@@ -215,6 +248,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
             bannerPriority={false}
           ></SeoArticleHtml>
         </SeoArticleHtmlClient>
+
         <SearchResultFaq
           locationText={getCountryNameTH(countryId!) ?? ""}
         ></SearchResultFaq>
