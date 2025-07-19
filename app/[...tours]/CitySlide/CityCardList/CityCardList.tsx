@@ -20,7 +20,7 @@ export default function CityCardList({
 }: Props) {
   return (
     <>
-      {cityList.map((item) => (
+      {cityList.map((item, index) => (
         <Link
           prefetch={false}
           key={item.id}
@@ -38,7 +38,7 @@ export default function CityCardList({
               alt={item.name_th}
               fill
               sizes="170"
-              priority
+              priority={index < 7}
             />
             <figcaption className={styles.cityName}>{item.name_th}</figcaption>
 

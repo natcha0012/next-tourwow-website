@@ -18,12 +18,10 @@ async function SeoArticleHtml({
   const seoArticle = await getSeoArticle(path);
   if (seoArticle) {
     const imageClassInnerHTML = style.image;
-    const html = seoArticle.content;
-    const replacedHtml = html.replace(
-      /class="image"/g,
-      `class="${imageClassInnerHTML}"`
-    );
-    seoArticle.content = replacedHtml;
+    let html = seoArticle.content;
+    html = html.replace(/<img/g, '<img loading="lazy"');
+    html = html.replace(/class="image"/g, `class="${imageClassInnerHTML}"`);
+    seoArticle.content = html;
   }
 
   return (
