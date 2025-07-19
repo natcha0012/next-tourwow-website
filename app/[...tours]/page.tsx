@@ -42,7 +42,6 @@ export async function generateMetadata({
   };
 }
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
-  const start = Date.now();
   const countries = getAllCountry();
   const breadcrumb: BreadcrumbType[] = [];
   let countryId: number | null;
@@ -154,7 +153,6 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
       });
     }
   }
-  console.log(Date.now() - start);
   return (
     <div>
       <Breadcrumb breadcrumb={breadcrumb}></Breadcrumb>
@@ -175,17 +173,30 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </span>
         </div>
       </section>
-
-      <CitySlide>
-        <CityCardList
-          defaultImage={defaultImage}
-          basePath={`/${tours[0]}`}
-          cityList={cities}
-          subUnitId={countrySubUnitId}
-          lowestPrice={tourwowGuRuHeader.lowestPrice}
-        ></CityCardList>
-      </CitySlide>
-      <Suspense fallback={<Loading></Loading>}>
+      <Suspense
+        fallback={
+          <div className="h-[264px]">
+            <Loading></Loading>
+          </div>
+        }
+      >
+        <CitySlide>
+          <CityCardList
+            defaultImage={defaultImage}
+            basePath={`/${tours[0]}`}
+            cityList={cities}
+            subUnitId={countrySubUnitId}
+            lowestPrice={tourwowGuRuHeader.lowestPrice}
+          ></CityCardList>
+        </CitySlide>
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="h-[50vh]">
+            <Loading></Loading>
+          </div>
+        }
+      >
         {countryId! && (
           <DaySelector
             countryId={countryId}
