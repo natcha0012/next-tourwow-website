@@ -42,6 +42,7 @@ export async function generateMetadata({
   };
 }
 async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
+  const start = Date.now();
   const countries = getAllCountry();
   const breadcrumb: BreadcrumbType[] = [];
   let countryId: number | null;
@@ -63,6 +64,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   let cities: CountrySubUnit[] = [];
   const pageData = await getCurrentPageData("/" + (tours || []).join("/"));
   if (pageData) {
+    console.log("after get pageDate", Date.now() - start);
     countryId = pageData?.page_argument.country_id ?? null;
     countrySubUnitId = pageData?.page_argument.country_sub_unit_id;
     cities = await getAllCity(countryId);
@@ -153,6 +155,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
       });
     }
   }
+  console.log("before render", Date.now() - start);
   return (
     <div>
       <Suspense fallback={<Loading></Loading>}>
