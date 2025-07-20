@@ -1,0 +1,45 @@
+.blogListLayout {
+  display: block;
+  margin-top: 1rem;
+}
+
+@media (min-width: 62rem) {
+  .blogListLayout {
+    display: flex;
+    margin-top: 3rem;
+  }
+  .blogListLeft {
+    width: 75%;
+    box-sizing: border-box;
+  }
+
+  .blogListRight {
+    width: 25%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+  }
+}
+
+.moreArticle {
+  margin-bottom: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-family: "Kanit";
+  display: inline-block;
+  border-radius: 0.25rem;
+  border: solid 1px var(--tw-dark-blue);
+  background-color: transparent;
+  color: var(--tw-dark-blue);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.categoryList > li {
+  font-size: 1.2rem;
+  color: var(--tw-gray);
+}

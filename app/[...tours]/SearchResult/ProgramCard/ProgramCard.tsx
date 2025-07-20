@@ -15,7 +15,7 @@ type Props = {
 function ProgramCard({ program }: Props) {
   return (
     <div className={style.card}>
-      <Link prefetch={false} className="w-full" href={program.product_url}>
+      <Link className="w-full" href={program.product_url} prefetch={false}>
         <figure className="-m-2 relative h-[300px] lg:h-[260px]">
           <Image
             src={program?.banner_url}
@@ -26,7 +26,7 @@ function ProgramCard({ program }: Props) {
           ></Image>
         </figure>
       </Link>
-      <Link prefetch={false} href={program.product_url}>
+      <Link href={program.product_url} prefetch={false}>
         <h3 className={style.headline}>{program.name}</h3>
       </Link>
       <p className={style.hilight}>{program.hilight_description}</p>
@@ -96,8 +96,8 @@ function ProgramCard({ program }: Props) {
           </div>
         )}
         <Link
-          prefetch={false}
           href={program.product_url}
+          prefetch={false}
           className={style.buttonViewDetail}
         >
           ดูข้อมูล

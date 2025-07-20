@@ -42,7 +42,7 @@ export default function BannerClient({
             src={s.img}
             alt={`Banner ${idx + 1}`}
             fill
-            priority={idx === 0}
+            priority
             sizes="(max-width: 640px) 286px, 100vw"
             className="sm:w-full w-[286px] h-full object-contain sm:object-cover"
           />

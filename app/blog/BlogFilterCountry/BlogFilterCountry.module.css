@@ -1,0 +1,29 @@
+.btn {
+  font-family: "Kanit";
+  font-size: 1.2rem;
+  display: inline-block;
+  border-radius: 0.25rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  background-color: var(--tw-light-gray);
+  color: var(--tw-gray);
+  border: none;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btnActive {
+  background-color: var(--tw-dark-blue);
+  color: white;
+  border: none;
+}
+
+.linkMore {
+  font-size: 1.2rem;
+  color: var(--tw-gray);
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

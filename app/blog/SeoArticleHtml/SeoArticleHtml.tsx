@@ -2,20 +2,26 @@ import React from "react";
 import Image from "next/image";
 import { getSeoArticle } from "@/app/[...tours]/apis/seo-article";
 import style from "./SeoArticleHtml.module.css";
+import { getBlogDetail } from "../apis/blog";
 
 type Props = {
-  path: string;
+  path?: string;
+  blogId?: number;
   showH1?: boolean;
   bannerPriority?: boolean;
   contentCollapsed?: boolean;
 };
 async function SeoArticleHtml({
   path,
+  blogId,
   showH1 = true,
   bannerPriority = true,
   contentCollapsed = true,
 }: Props) {
-  const seoArticle = await getSeoArticle(path);
+  if (!path && !blogId) return;
+  const seoArticle = path
+    ? await getSeoArticle(path)
+    : await getBlogDetail(blogId!);
   if (seoArticle) {
     const imageClassInnerHTML = style.image;
     let html = seoArticle.content;
@@ -25,7 +31,7 @@ async function SeoArticleHtml({
   }
 
   return (
-    <section className={`mt-20 container`}>
+    <section className={`container`}>
       {seoArticle?.desktop_cover_image_preview_url && (
         <figure className="flex justify-center">
           <Image
@@ -37,7 +43,7 @@ async function SeoArticleHtml({
           ></Image>
         </figure>
       )}
-      {showH1 && <h1>{seoArticle?.name}</h1>}
+      {showH1 && <h1 className="p-4">{seoArticle?.name}</h1>}
       {seoArticle?.first_paragraph && (
         <div
           className={`${style.articleTextContent} ${

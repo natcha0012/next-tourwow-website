@@ -14,19 +14,23 @@ export default function PopupMenu() {
     <div className="text-[var(--tw-gray)]">
       <b className=" ml-4">{title}</b>
       <ul
-        className={`grid grid-cols-2 px-4 mt-4 ${
+        className={`grid px-4 mt-4 ${
           title === "ทัวร์ทวีปยุโรป"
             ? " border-x-[1px] border-[var(--tw-light-gray)]"
             : ""
+        }  ${
+          title === "ทัวร์ทวีปอื่นๆ"
+            ? "grid-cols-1 xl:grid-cols-2"
+            : "grid-cols-2"
         }`}
       >
         {countries.map((item, index) => (
           <li key={index} className=" flex mr-2 mb-2 gap-2">
-            <a href={`/${item.slug}-tour`}>
+            <a className="relative w-[35px] h-auto" href={`/${item.slug}-tour`}>
               <Image
-                style={{ verticalAlign: "bottom" }}
-                width={35}
-                height={24}
+                className=" align-bottom"
+                fill
+                sizes="35"
                 src={`/flag-icons/${item.country_code.toLowerCase()}.svg`}
                 alt={item.name_en}
                 loading="lazy"
