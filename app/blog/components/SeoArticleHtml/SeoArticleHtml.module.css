@@ -11,6 +11,30 @@
   min-height: 90vh;
 }
 
+.seoArticleContainer a {
+  color: var(--tw-blue);
+}
+
+.seoArticleContainer h1,
+.seoArticleContainer h2,
+.seoArticleContainer h3,
+.seoArticleContainer h4,
+.seoArticleContainer h5,
+.seoArticleContainer h6 {
+  font-family: "Kanit", sans-serif;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.seoArticleContainer h1 {
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+}
+
+.seoArticleContainer h6 {
+  font-size: 1.1rem;
+}
+
 .articleTextContent {
   padding: 1rem;
 }
