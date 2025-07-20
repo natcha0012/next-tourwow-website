@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./CalendarPrice.module.css";
 import { thaiMonths } from "@/constants/months";
-import { ICalendarPrice } from "../../types/calendar-price";
+import { ICalendarPrice } from "../../../types/calendar-price";
 import CalendarPriceButton from "./CalendarPriceButton";
 
 type Props = {

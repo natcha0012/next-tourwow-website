@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./BlogList.module.css";
-import { getBlogList } from "../../../apis/blog";
+import { getBlogList } from "../../../../apis/blog";
 import { BlogItem } from "../../interfaces/blog";
 import BlogCard from "@/components/BlogCard/BlogCard";
 

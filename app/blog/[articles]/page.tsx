@@ -1,5 +1,5 @@
 import React from "react";
-import SeoArticleHtml from "../SeoArticleHtml/SeoArticleHtml";
+import SeoArticleHtml from "../components/SeoArticleHtml/SeoArticleHtml";
 import { getCurrentPageData } from "@/app/libs/apis/page-data";
 import styles from "./page.module.css";
 import Breadcrumb, { BreadcrumbType } from "@/components/Breadcrumb";

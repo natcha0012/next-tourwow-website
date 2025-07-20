@@ -1,8 +1,8 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
 import MonthChoice from "./MonthChoice/MonthChoice";
-import { getProductDateData } from "../apis/program";
-import { ICalendarPrice } from "../types/calendar-price";
+import { getProductDateData } from "../../apis/program";
+import { ICalendarPrice } from "../../types/calendar-price";
 import CalendarPrice from "./CalendarPrice/CalendarPrice";
 
 type Props = {

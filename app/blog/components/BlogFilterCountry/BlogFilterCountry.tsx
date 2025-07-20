@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./BlogFilterCountry.module.css";
-import { Country } from "../page";
+import { Country } from "../../page";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,

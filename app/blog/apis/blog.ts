@@ -1,4 +1,4 @@
-import { BlogListResponse } from "../BlogFilterCountry/interfaces/blog";
+import { BlogListResponse } from "../components/BlogFilterCountry/interfaces/blog";
 import { ISeoArticleDetail } from "../types/seo-article-detail";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;

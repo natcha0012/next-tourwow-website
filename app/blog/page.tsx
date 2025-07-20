@@ -1,6 +1,6 @@
 import Breadcrumb, { BreadcrumbType } from "@/components/Breadcrumb";
 import React from "react";
-import BlogFilterCountry from "./BlogFilterCountry/BlogFilterCountry";
+import BlogFilterCountry from "./components/BlogFilterCountry/BlogFilterCountry";
 import { Metadata } from "next";
 
 export type Country = {

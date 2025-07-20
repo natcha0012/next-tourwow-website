@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import {
   programSelectedAtom,
   TProgramSelectedAtom,
-} from "../../atoms/programSelectedAtom";
+} from "../../../atoms/programSelectedAtom";
 
 type Props = {
   date: TProgramSelectedAtom;

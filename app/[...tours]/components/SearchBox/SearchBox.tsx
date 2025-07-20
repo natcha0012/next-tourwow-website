@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SuggestionText, SearchBoxFilters } from "../types/search-box";
+import { SuggestionText, SearchBoxFilters } from "../../types/search-box";
 import { Country, CountrySubUnit } from "@/app/[...tours]/types/country";
 import styles from "./SearchBox.module.css";
 import { IoSearchOutline } from "react-icons/io5";

@@ -9,22 +9,24 @@ import {
   getCountrySlug,
 } from "./apis/country";
 import { getAllCity } from "./apis/city";
-import SearchBox from "./SearchBox/SearchBox";
+import SearchBox from "./components/SearchBox/SearchBox";
 import { getCurrentPageData } from "../libs/apis/page-data";
 import { ProgramFilters } from "./types/program-filters";
 import { thaiMonths } from "@/constants/months";
 import { CountrySubUnit } from "./types/country";
-import CitySlide from "./CitySlide/CitySlide";
-import CityCardList from "./CitySlide/CityCardList/CityCardList";
-import DaySelector from "./DaySelector/DaySelector";
+import CitySlide from "./components/CitySlide/CitySlide";
+import CityCardList from "./components/CitySlide/CityCardList/CityCardList";
+import DaySelector from "./components/DaySelector/DaySelector";
 import { tourRoutes } from "@/constants/tours-route";
-import SeoArticleHtml from "../blog/SeoArticleHtml/SeoArticleHtml";
-import SeoArticleHtmlClient from "../blog/SeoArticleHtml/SeoArticleHtmlClient";
-import SearchResultFaq from "./SearchResultFaq/SearchResultFaq";
+import SeoArticleHtml from "../blog/components/SeoArticleHtml/SeoArticleHtml";
+import SeoArticleHtmlClient from "../blog/components/SeoArticleHtml/SeoArticleHtmlClient";
+import SearchResultFaq from "./components/SearchResultFaq/SearchResultFaq";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Loading from "../components/Loading/Loading";
-const SearchResult = dynamic(() => import("./SearchResult/SearchResult"));
+const SearchResult = dynamic(
+  () => import("./components/SearchResult/SearchResult")
+);
 export async function generateMetadata({
   params,
 }: {

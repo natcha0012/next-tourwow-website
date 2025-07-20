@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./SearchResult.module.css";
 import { FaSliders } from "react-icons/fa6";
-import { ProgramFilters, ProgramSortBy } from "../types/program-filters";
-import { getPrograms } from "../apis/program";
-import { Period, Program } from "../types/program";
+import { ProgramFilters, ProgramSortBy } from "../../types/program-filters";
+import { getPrograms } from "../../apis/program";
+import { Period, Program } from "../../types/program";
 import ProgramCard from "./ProgramCard/ProgramCard";
 import { thaiMonthsAbbreviation } from "@/constants/months";
-import { programSelectedAtom } from "../atoms/programSelectedAtom";
+import { programSelectedAtom } from "../../atoms/programSelectedAtom";
 import { useAtom } from "jotai";
 type Props = {
   headlineText: string;

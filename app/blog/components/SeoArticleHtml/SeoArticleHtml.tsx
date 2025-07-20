@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { getSeoArticle } from "@/app/[...tours]/apis/seo-article";
 import style from "./SeoArticleHtml.module.css";
-import { getBlogDetail } from "../apis/blog";
+import { getBlogDetail } from "../../apis/blog";
 
 type Props = {
   path?: string;

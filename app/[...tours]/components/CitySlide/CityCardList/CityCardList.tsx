@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CountrySubUnit } from "../../types/country";
+import { CountrySubUnit } from "../../../types/country";
 import styles from "./CityCardList.module.css";
 import Link from "next/link";
 

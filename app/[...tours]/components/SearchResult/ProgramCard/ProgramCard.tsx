@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Program.module.css";
 import Link from "next/link";
-import { Program } from "../../types/program";
+import { Program } from "../../../types/program";
 import Image from "next/image";
 import { PiMapPinArea } from "react-icons/pi";
 import { RxClock } from "react-icons/rx";
