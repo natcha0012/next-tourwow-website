@@ -60,10 +60,12 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
   let defaultImage = "";
   let searchFilters: ProgramFilters = {};
   const { tours } = await params;
+  const showCountrySelector = tours[0] === "tours";
 
   if (!tourRoutes.includes(tours[0])) {
     return <div>Page not found</div>;
   }
+
   let cities: CountrySubUnit[] = [];
   const pageData = await getCurrentPageData("/" + (tours || []).join("/"));
   if (pageData) {
@@ -195,7 +197,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </div>
         </section>
       </Suspense>
-      {tours[0] === "tours" && (
+      {showCountrySelector && (
         <Suspense
           fallback={
             <div className="h-[270px]">
@@ -208,7 +210,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </CountrySlideClient>
         </Suspense>
       )}
-      {tours[0] !== "tours" && (
+      {!showCountrySelector && (
         <Suspense
           fallback={
             <div className="h-[270px]">
@@ -227,20 +229,22 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </CitySlide>
         </Suspense>
       )}
-      <Suspense
-        fallback={
-          <div className="h-[50vh]">
-            <Loading></Loading>
-          </div>
-        }
-      >
-        {countryId! && (
-          <DaySelector
-            countryId={countryId}
-            countrySubUnitId={countrySubUnitId}
-          ></DaySelector>
-        )}
-      </Suspense>
+      {!showCountrySelector && (
+        <Suspense
+          fallback={
+            <div className="h-[50vh]">
+              <Loading></Loading>
+            </div>
+          }
+        >
+          {countryId! && (
+            <DaySelector
+              countryId={countryId}
+              countrySubUnitId={countrySubUnitId}
+            ></DaySelector>
+          )}
+        </Suspense>
+      )}
       <Suspense
         fallback={
           <div className="h-[50vh]">
@@ -260,7 +264,7 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </div>
         }
       >
-        {tours[0] !== "tours" && (
+        {!showCountrySelector && (
           <SeoArticleHtmlClient>
             <SeoArticleHtml
               path={"/" + (tours || []).join("/")}
