@@ -1,4 +1,5 @@
 export const tourRoutes = [
+  "tours",
   "algeria-tour",
   "argentina-tour",
   "armenia-tour",

@@ -24,6 +24,8 @@ import SearchResultFaq from "./components/SearchResultFaq/SearchResultFaq";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Loading from "../components/Loading/Loading";
+import CountrySlideClient from "./components/CountrySlide/CountrySlideClient";
+import CountrySelector from "./components/CountrySlide/CountrySelector/CountrySelector";
 const SearchResult = dynamic(
   () => import("./components/SearchResult/SearchResult")
 );
@@ -193,23 +195,38 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </div>
         </section>
       </Suspense>
-      <Suspense
-        fallback={
-          <div className="h-[264px]">
-            <Loading></Loading>
-          </div>
-        }
-      >
-        <CitySlide>
-          <CityCardList
-            defaultImage={defaultImage}
-            basePath={`/${tours[0]}`}
-            cityList={cities}
-            subUnitId={countrySubUnitId}
-            lowestPrice={tourwowGuRuHeader.lowestPrice}
-          ></CityCardList>
-        </CitySlide>
-      </Suspense>
+      {tours[0] === "tours" && (
+        <Suspense
+          fallback={
+            <div className="h-[270px]">
+              <Loading></Loading>
+            </div>
+          }
+        >
+          <CountrySlideClient>
+            <CountrySelector></CountrySelector>
+          </CountrySlideClient>
+        </Suspense>
+      )}
+      {tours[0] !== "tours" && (
+        <Suspense
+          fallback={
+            <div className="h-[270px]">
+              <Loading></Loading>
+            </div>
+          }
+        >
+          <CitySlide>
+            <CityCardList
+              defaultImage={defaultImage}
+              basePath={`/${tours[0]}`}
+              cityList={cities}
+              subUnitId={countrySubUnitId}
+              lowestPrice={tourwowGuRuHeader.lowestPrice}
+            ></CityCardList>
+          </CitySlide>
+        </Suspense>
+      )}
       <Suspense
         fallback={
           <div className="h-[50vh]">
@@ -243,13 +260,15 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
           </div>
         }
       >
-        <SeoArticleHtmlClient>
-          <SeoArticleHtml
-            path={"/" + (tours || []).join("/")}
-            showH1={false}
-            bannerPriority={false}
-          ></SeoArticleHtml>
-        </SeoArticleHtmlClient>
+        {tours[0] !== "tours" && (
+          <SeoArticleHtmlClient>
+            <SeoArticleHtml
+              path={"/" + (tours || []).join("/")}
+              showH1={false}
+              bannerPriority={false}
+            ></SeoArticleHtml>
+          </SeoArticleHtmlClient>
+        )}
 
         <SearchResultFaq
           locationText={getCountryNameTH(countryId!) ?? ""}
