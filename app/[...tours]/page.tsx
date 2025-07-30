@@ -26,6 +26,7 @@ import dynamic from "next/dynamic";
 import Loading from "../components/Loading/Loading";
 import CountrySlideClient from "./components/CountrySlide/CountrySlideClient";
 import CountrySelector from "./components/CountrySlide/CountrySelector/CountrySelector";
+import { getGuruHeader } from "./apis/program";
 const SearchResult = dynamic(
   () => import("./components/SearchResult/SearchResult")
 );
@@ -106,23 +107,11 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         .substring(2)} - ${(currentYear + 1).toString().substring(2)}`;
     }
     setHeadline(additionTextHeadline);
-    const res = await fetch("http://localhost:3000/api/tourwow-guru", {
-      method: "POST",
-      body: JSON.stringify(searchFilters),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      next: { revalidate: 60 },
-    });
 
-    let totalQuantityRemaining = "0";
-    let lowestPrice = "0";
-    const guruData = await res.json();
+    const { totalQuantityRemaining, lowestPrice } = await getGuruHeader(
+      searchFilters
+    );
 
-    if (guruData) {
-      totalQuantityRemaining = guruData.totalQuantityRemaining;
-      lowestPrice = guruData.lowestPrice;
-    }
     tourwowGuRuHeader = {
       cityCount: countryId ? getCityCount(countryId).toLocaleString() : "0",
       totalQuantityRemaining,

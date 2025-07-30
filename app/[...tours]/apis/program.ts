@@ -5,6 +5,7 @@ import {
 } from "@/app/[...tours]/types/program-filters";
 import { ICalendarPrice } from "../types/calendar-price";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const HOST = process.env.NEXT_PUBLIC_HOST;
 export async function getPrograms(
   page: number,
   pageEntries: number,
@@ -58,5 +59,24 @@ export async function getProductDateData(
   } catch (error) {
     console.error("Error fetching product data:", error);
     return [];
+  }
+}
+
+export async function getGuruHeader(
+  searchFilters: ProgramFilters
+): Promise<{ totalQuantityRemaining: string; lowestPrice: string }> {
+  try {
+    const res = await fetch(`${HOST}api/tourwow-guru`, {
+      method: "POST",
+      body: JSON.stringify(searchFilters),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 60 },
+    });
+    return res.json();
+  } catch (error) {
+    console.error("Error getting guru header:", error);
+    return { totalQuantityRemaining: "0", lowestPrice: "0" };
   }
 }
