@@ -107,7 +107,6 @@ async function TourPage({ params }: { params: Promise<{ tours: string[] }> }) {
         .substring(2)} - ${(currentYear + 1).toString().substring(2)}`;
     }
     setHeadline(additionTextHeadline);
-
     const { totalQuantityRemaining, lowestPrice } = await getGuruHeader(
       searchFilters
     );

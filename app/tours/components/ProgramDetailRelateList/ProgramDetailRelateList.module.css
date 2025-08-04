@@ -1,0 +1,19 @@
+.programCard {
+  flex: 1 1 100%;
+  min-height: 400px;
+  max-width: none;
+  margin: 0.5rem 0;
+}
+
+@media (min-width: 40rem) {
+  .programCard {
+    flex: 1 1 50%;
+  }
+}
+
+@media (min-width: 75rem) {
+  .programCard {
+    flex: 1 1 23%;
+    max-width: 292.5px;
+  }
+}

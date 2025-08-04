@@ -42,3 +42,13 @@ export const thaiMonthsAbbreviation = [
   "พ.ย.",
   "ธ.ค.",
 ];
+
+export const dayOfWeekInThaiAbbreviation = [
+  "อา.",
+  "จ.",
+  "อ.",
+  "พ.",
+  "พฤ.",
+  "ศ.",
+  "ส.",
+];

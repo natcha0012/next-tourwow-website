@@ -1,0 +1,34 @@
+.lowQuatityLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--tw-red);
+  color: white;
+  font-size: 0.8rem;
+  width: 75px;
+  border-radius: 1rem;
+}
+
+.periodTable {
+  width: calc(100% + 2rem);
+  margin: 0 -1rem;
+  overflow: auto;
+}
+
+.bookingButton {
+  color: white;
+  background-color: var(--tw-yellow);
+
+  padding: 0.5rem 1rem;
+  display: block;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.green {
+  background-color: var(--tw-green);
+}
+
+.tableBorder {
+  border-bottom: 8px solid var(--tw-light-gray);
+}

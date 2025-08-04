@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "lightgallery/css/lightgallery.css";
+@import "lightgallery/css/lg-thumbnail.css";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -58,6 +61,18 @@ body {
   }
 }
 
+.sarabun {
+  font-family: "Sarabun";
+}
+
+button {
+  cursor: pointer;
+}
+
+p {
+  margin: 1rem 0;
+}
+
 h1,
 h2,
 h3,
@@ -67,7 +82,7 @@ h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1.25rem 0;
 }
 
@@ -78,5 +93,10 @@ h2 {
 
 h3 {
   font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+h4 {
+  font-size: 1rem;
   margin: 1rem 0;
 }

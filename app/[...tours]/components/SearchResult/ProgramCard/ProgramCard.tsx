@@ -13,9 +13,10 @@ type Props = {
   program: Program;
 };
 function ProgramCard({ program }: Props) {
+  const productUrl = new URL(program.product_url).pathname;
   return (
     <div className={style.card}>
-      <Link className="w-full" href={program.product_url} prefetch={false}>
+      <Link className="w-full" href={productUrl} prefetch={false}>
         <figure className="-m-2 relative h-[300px] lg:h-[260px]">
           <Image
             src={program?.banner_url}
@@ -26,7 +27,7 @@ function ProgramCard({ program }: Props) {
           ></Image>
         </figure>
       </Link>
-      <Link href={program.product_url} prefetch={false}>
+      <Link href={productUrl} prefetch={false}>
         <h3 className={style.headline}>{program.name}</h3>
       </Link>
       <p className={style.hilight}>{program.hilight_description}</p>
@@ -96,7 +97,7 @@ function ProgramCard({ program }: Props) {
           </div>
         )}
         <Link
-          href={program.product_url}
+          href={productUrl}
           prefetch={false}
           className={style.buttonViewDetail}
         >

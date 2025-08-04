@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  padding: 0 1rem;
+}
+
+.header > li {
+  flex: 0 0 13.3%;
+  text-align: center;
+}
+
+.dayButton {
+  position: relative;
+  text-align: center;
+}
+
+.dayButton > label {
+  width: 38px;
+  height: 38px;
+  background-color: white;
+
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid rgba(47, 92, 143, 0.261523);
+  padding-top: 0.5rem;
+}
+
+.disable {
+  background-color: white;
+  border-color: var(--tw-light-gray);
+  color: var(--tw-light-gray);
+  cursor: not-allowed;
+}
+
+.blank {
+  background-color: var(--tw-green) !important;
+  border-color: var(--tw-green) !important;
+  color: white;
+  cursor: pointer;
+}
+
+.full {
+  background-color: var(--tw-light-gray) !important;
+  border-color: var(--tw-light-gray) !important;
+  color: white;
+}
+
+.pick {
+  background-color: var(--tw-blue) !important;
+  border-color: var(--tw-blue) !important;
+  color: white;
+}
+
+.priceLabel {
+  font-size: 0.8rem;
+  display: block;
+}
